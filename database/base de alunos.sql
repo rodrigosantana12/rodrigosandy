@@ -23,8 +23,8 @@ USE dadosAlunos ;
 CREATE TABLE IF NOT EXISTS usuario (
   `idusuario` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
-  `email` VARCHAR(45) NULL,
-  `senha` VARCHAR(45) NULL,
+  `email` VARCHAR(150) NULL,
+  `senha` VARCHAR(30) NULL,
   PRIMARY KEY (`idusuario`))
 ENGINE = InnoDB;
 
@@ -35,11 +35,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS aluno (
   `iddados_pessoais` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
-  `sobrenome` VARCHAR(45) NULL,
-  `sexo` VARCHAR(45) NULL,
-  `nascimento` VARCHAR(45) NULL,
-  `cpf` VARCHAR(45) NULL,
-  `matricula` VARCHAR(45) NULL,
+  `sobrenome` VARCHAR(100) NULL,
+  `sexo` VARCHAR(10) NULL,
+  `nascimento` date NULL,
+  `cpf` int NULL,
+  `matricula` int NULL,
   PRIMARY KEY (`iddados_pessoais`))
 ENGINE = InnoDB;
 
@@ -50,11 +50,11 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS professor (
   `idprofessor` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
-  `sobrenome` VARCHAR(45) NULL,
-  `cpf` VARCHAR(45) NULL,
-  `rg` VARCHAR(45) NULL,
-  `sexo` VARCHAR(45) NULL,
-  `nascimento` VARCHAR(45) NULL,
+  `sobrenome` VARCHAR(100) NULL,
+  `cpf` int NULL,
+  `rg` int NULL,
+  `sexo` VARCHAR(10) NULL,
+  `nascimento` date NULL,
   PRIMARY KEY (`idprofessor`))
 ENGINE = InnoDB;
 
@@ -65,7 +65,6 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS disciplinas (
   `iddisciplinas` INT NOT NULL,
   `nome` VARCHAR(45) NULL,
-  `disciplinascol` VARCHAR(45) NULL,
   `professor_idprofessor` INT NOT NULL,
   PRIMARY KEY (`iddisciplinas`, `professor_idprofessor`),
   INDEX `fk_disciplinas_professor_idx` (`professor_idprofessor` ASC) VISIBLE,
